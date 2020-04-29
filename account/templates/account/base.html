@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body>
+
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">SIGN UP</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">SIGN IN</a>
+        </li>
+    </ul>
+
+    {% block body %}
+
+    <h1>ブログ記事</h1>
+
+
+
+    {% for post in posts %}
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item active">{{ post.title }}</li>
+            <li class="list-group-item">{{ post.author }}</li>
+            <li class="list-group-item">{{ post.date_posted|date:'Y.m.d' }}</li>
+            <li class="list-group-item">{{ post.content }}</li>
+        </ul>
+    </div>
+    {% endfor %}
+
+    {% endblock body %}
+
+</body>
+
+</HTML>

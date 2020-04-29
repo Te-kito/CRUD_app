@@ -1,0 +1,31 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<div class="container">
+
+    <div class="sign_form">
+
+        <h1>アカウントの作成</h1>
+
+        <!-- ? djangoのフォームにするためにmethod='POST'としてあげる  -->
+        <form method='POST'>
+            <!-- ? django特有のセキュリティ {% csrf_token %}を直下に入れてあげる -->
+            {% csrf_token %}
+
+            <!-- ? tagでフォームを入れてあげる -->
+            <!-- ? .as_p とするとpタグとしてフォームができる(簡単) -->
+            <!-- TODO フォームを綺麗にしたいなら→ pipenv install django-crispy-forms -->
+            <!-- TODO 新しいアプリをインストールしたらまず、config/settings.py INSTALLED_APPSに設定 -->
+            <!-- TODO crispy_forms_tags をloadしてあげる -->
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-primary">SIGN UP</button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock body %}
