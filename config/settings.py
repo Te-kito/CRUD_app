@@ -131,3 +131,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # TODO   crispy-formsの設定
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+# TODO  ログインのリダイレクト先設定
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'login'

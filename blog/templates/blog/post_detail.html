@@ -1,0 +1,28 @@
+{% extends 'account/base.html' %}
+
+
+
+{% block body %}
+
+<!-- ? していなければ object で受け取れる -->
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item active">{{ object.title }}</li>
+        <li class="list-group-item">{{ object.author }}</li>
+        <li class="list-group-item">{{ object.date_posted|date:'Y.m.d' }}</li>
+        <li class="list-group-item">{{ object.content }}</li>
+    </ul>
+
+    <hr>
+
+    <div class="d-flex justify-content-center">
+        <form action="{% url 'post-update' post.id %}">
+            <button type="submit" class="btn btn-success slide">UPDATE</button>
+        </form>
+        <form action="{% url 'post-delete' post.id %}">
+            <button type="submit" class="btn btn-danger slide">DELETE</button>
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

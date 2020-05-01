@@ -1,0 +1,27 @@
+{% extends 'account/base.html' %}
+
+
+{% block body %}
+
+<div class="container">
+
+    <div class="sign_form">
+
+        <h1>DELETE</h1>
+        <hr>
+        <p>※本当に『{{ object.title }}』を削除しますか？</p>
+
+
+        <form method='POST'>
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-danger">DELETE</button>
+        </form>
+
+
+
+
+    </div>
+</div>
+
+{% endblock body %}

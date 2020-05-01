@@ -14,33 +14,33 @@
 
 <body>
 
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">SIGN UP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">SIGN IN</a>
-        </li>
-    </ul>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">MY APP</a>
+
+        <ul class="nav justify-content-end">
+
+            <!-- TODO Authenticateにより条件分岐 -->
+
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'blog-home' %}">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">LOG OUT</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">PROFILE</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'blog-home' %}">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">SIGN UP</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">SIGN IN</a></li>
+            {% endif %}
+
+
+        </ul>
+
+    </nav>
+
 
     {% block body %}
 
-    <h1>ブログ記事</h1>
-
-
-
-    {% for post in posts %}
-    <div class="container">
-        <ul class="list-group">
-            <li class="list-group-item active">{{ post.title }}</li>
-            <li class="list-group-item">{{ post.author }}</li>
-            <li class="list-group-item">{{ post.date_posted|date:'Y.m.d' }}</li>
-            <li class="list-group-item">{{ post.content }}</li>
-        </ul>
-    </div>
-    {% endfor %}
-
     {% endblock body %}
+
 
 </body>
 

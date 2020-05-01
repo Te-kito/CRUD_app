@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 # * カスタムユーザーモデル 推奨 →setting.py AUTH_USER_MODEL='users.CustomUser'
 # from django.conf import settings
+# * reverse投稿後のURLを指定
+from django.urls import reverse
 
 # Create your models here.
 
@@ -29,5 +31,11 @@ class Post(models.Model):
     # ? ブログの管理画面で文字列で表示させる
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+
+        # TODO 投稿した瞬間には、pkが何番か分からない、
+        # TODO そこで、自身のpkを記憶し手あげてdetailに redirect = reverse(）
+        return reverse('post-detail', kwargs={'pk': self.pk})
 
 # * model完成 → admin.py → views.py → config/urls.py

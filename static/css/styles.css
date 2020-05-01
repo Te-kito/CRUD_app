@@ -18,3 +18,11 @@
 #hint_id_password1 {
     display: none ;
 }
+
+.list-group {
+    margin: 20px auto ;
+}
+
+form {
+    margin: 0 5px ;
+}

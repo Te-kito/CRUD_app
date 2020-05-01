@@ -22,7 +22,7 @@ def signup(request):  # ? functionの時は100％ request=入力情報がつま�
         # ? is_valid()=立証して正しければ さっきの #hint_id_usernameとか
         if form.is_valid():
             form.save()
-            return redirect('blog-home')
+            return redirect('login')
     else:
         # ? この関数はform で UserCreationForm()ですよ
         form = UserCreationForm()
