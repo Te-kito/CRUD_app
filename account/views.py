@@ -7,6 +7,17 @@ from django.shortcuts import render, redirect
 # * １からユーザー登録フォームを作るときに便利...（pass）の照合などをやってくれる
 from django.contrib.auth.forms import UserCreationForm
 
+# ? CRUDのviewをインポート
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+
+from .models import Account
+
 # Create your views here.
 
 # TODO まずSIGN UP の view を作る
@@ -30,3 +41,10 @@ def signup(request):  # ? functionの時は100％ request=入力情報がつま�
     # ? 再） render() 関数は、第1引数として request オブジェクトを、第2引数としてテンプレート名, 第3引数（任意）として辞書を受け取ります
     # ? 辞書に関して {'key' : value} valueは上にあるUserCreationForm,  keyはHTMLで使う {{key}}
     return render(request, 'account/signup.html', {'form': form})
+
+
+class AccountCreateView(CreateView):
+    model = Account
+    # * 設定しなければ、 template_name = "account_form"
+    fields = ['name','introduction', 'thumbnail']
+    context_object_name = 'account'
